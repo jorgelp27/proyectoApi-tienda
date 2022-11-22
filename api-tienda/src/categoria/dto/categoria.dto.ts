@@ -3,7 +3,7 @@ import { IsNumber, IsString, MaxLength } from "class-validator";
 export class CategoriaDto {
 
     @IsNumber()
-    id_categoria: number;
+    id: number;
 
     @IsString()
     @MaxLength(30)
