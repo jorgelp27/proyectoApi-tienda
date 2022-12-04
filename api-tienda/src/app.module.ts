@@ -1,15 +1,17 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ClientesModule } from './clientes/clientes.module';
-import { ProductosModule } from './productos/productos.module';
-import { ProveedorModule } from './proveedor/proveedor.module';
-import { CategoriaModule } from './categoria/categoria.module';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { ConfigModule } from '@nestjs/config';
+import { CategoriaModule } from './modulos/categoria/categoria.module';
+import { CestaModule } from './modulos/cesta/cesta.module';
+import { ClientesModule } from './modulos/clientes/clientes.module';
+import { ProductosModule } from './modulos/productos/productos.module';
+import { ProveedorModule } from './modulos/proveedor/proveedor.module';
 
 @Module({
-  imports: [ConfigModule.forRoot(), TypeOrmModule.forRoot({
+  imports: [ConfigModule.forRoot(),
+  TypeOrmModule.forRoot({
       type: 'postgres',
       host: process.env.DB_HOST,
       port: parseInt(process.env.DB_PORT),
@@ -18,8 +20,9 @@ import { ConfigModule } from '@nestjs/config';
       database: process.env.DB_NAME,
       autoLoadEntities: true,
       synchronize: !!process.env.DB_SYNC
-    }),
-  ClientesModule, ProductosModule, ProveedorModule, CategoriaModule,],
+  }), 
+  ClientesModule,ProductosModule,ProveedorModule,CategoriaModule,CestaModule
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

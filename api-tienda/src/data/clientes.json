@@ -1,0 +1,16 @@
+[
+    {
+        "dni":"12568596F",
+        "nombre": "pepe",
+        "email": "juan@gmail.com",
+        "ciudad": "Almeria",
+        "telefono": 663311459
+    },
+    {
+        "dni":"78543596F",
+        "nombre": "Eusebio",
+        "email": "eusebio@gmail.com",
+        "ciudad": "Granada",
+        "telefono": 659678159
+    }
+]
