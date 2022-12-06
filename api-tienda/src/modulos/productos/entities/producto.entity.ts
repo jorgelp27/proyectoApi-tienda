@@ -4,7 +4,7 @@ import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 @Entity('productos')
 export class Producto {
     @PrimaryGeneratedColumn("uuid")
-    id: number;
+    id: string;
 
     @Column('text',{
         unique: true

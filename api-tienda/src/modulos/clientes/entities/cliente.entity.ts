@@ -1,4 +1,7 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { profile } from "console";
+import { type } from "os";
+import { Profile } from "src/modulos/profile/entities/profile.entity";
+import { Column, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity('clientes')
 export class Cliente {
@@ -30,5 +33,14 @@ export class Cliente {
         nullable: true
     })
     telefono: number;
+
+    //Relacion
+
+    @OneToOne(
+        (type) => Profile,
+        (profile) => profile.cliente,
+        { cascade:false }
+    )
+    profile?: Profile
 
 }
