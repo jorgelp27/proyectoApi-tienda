@@ -1,12 +1,41 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { ClientesService } from '../clientes/clientes.service';
 import { CreateProfileDto } from './dto/create-profile.dto';
 import { UpdateProfileDto } from './dto/update-profile.dto';
+import { Profile } from './entities/profile.entity';
 
 @Injectable()
 export class ProfileService {
-  create(createProfileDto: CreateProfileDto) {
-    return 'This action adds a new profile';
+  
+  constructor(
+    @InjectRepository(Profile)
+    private readonly profileRepositorio: Repository<Profile>,
+    private readonly clienteService: ClientesService
+  ){
+
   }
+
+  async create(createProfileDto: CreateProfileDto) {
+    try {
+      //console.log(createProfileDto);
+      const { idCliente, ...camposProfile } = createProfileDto;
+      const profile = this.profileRepositorio.create({...camposProfile});
+      const cliente = await this.clienteService.findOne(idCliente);
+      profile.cliente = cliente;
+      await this.profileRepositorio.save(profile);
+      
+      // cliente.profile = profile;
+      // await this.clienteService.create(cliente);
+
+      return profile
+    } catch(error){
+        return new InternalServerErrorException('Error en BD')
+    }
+    
+  }
+
 
   findAll() {
     return `This action returns all profile`;

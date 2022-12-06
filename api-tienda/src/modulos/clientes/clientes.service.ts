@@ -30,12 +30,20 @@ export class ClientesService {
  
 
   findAll() {
-    return `This action returns all clientes`;
+    return this.clienteRepository.find({});
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} cliente`;
+  findOne(id: string) {
+    return this.clienteRepository.findOne({
+      where: { 
+        id 
+      },
+      relations: {
+          productos: true,
+      }
+    });
   }
+
 
   update(id: number, updateClienteDto: UpdateClienteDto) {
     return `This action updates a #${id} cliente`;

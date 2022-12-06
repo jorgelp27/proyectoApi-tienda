@@ -19,7 +19,7 @@ export class CreateProductoDto {
     descripcion: string;
 
     @IsString()
-    idCategoria?: string;
+    idCliente?: string;
 }
 
 

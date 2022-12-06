@@ -1,4 +1,5 @@
 import { Categoria } from "src/modulos/categoria/entities/categoria.entity";
+import { Cliente } from "src/modulos/clientes/entities/cliente.entity";
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity('productos')
@@ -34,5 +35,12 @@ export class Producto {
         { cascade: false }
     )
     categoria?: Categoria
+
+    @ManyToOne(
+        () => Cliente,
+        (cliente) => cliente.productos,
+        { cascade: false }
+    )
+    cliente?: Cliente
 
 }

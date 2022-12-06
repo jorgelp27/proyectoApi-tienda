@@ -1,5 +1,6 @@
 import { profile } from "console";
 import { type } from "os";
+import { Producto } from "src/modulos/productos/entities/producto.entity";
 import { Profile } from "src/modulos/profile/entities/profile.entity";
 import { Column, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
@@ -7,7 +8,7 @@ import { Column, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typ
 export class Cliente {
 
     @PrimaryGeneratedColumn("uuid")
-    id: number;
+    id: string;
 
     @Column('text',{
         unique: true
@@ -34,13 +35,22 @@ export class Cliente {
     })
     telefono: number;
 
-    //Relacion
+    //Relaciones
 
     @OneToOne(
         (type) => Profile,
         (profile) => profile.cliente,
         { cascade:false }
     )
-    profile?: Profile
+    profile?: Profile;
+
+
+    @OneToMany(
+        () => Producto,
+        (Producto) => Producto.cliente,
+        { cascade: false, eager: false  }
+
+    )
+    productos?: Producto[];
 
 }

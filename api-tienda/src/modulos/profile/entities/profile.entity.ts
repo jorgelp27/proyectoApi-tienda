@@ -5,12 +5,15 @@ import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "ty
 
 export class Profile {
     @PrimaryGeneratedColumn("uuid")
-    id: number;
+    id: string;
 
     @Column('text',{
         unique: true
     })
     email: string;
+
+    @Column('text')
+    password?: string;
 
     @Column('text',{
         unique: true

@@ -1,4 +1,4 @@
-import { IsEmail, IsString, MaxLength, MinLength } from "class-validator";
+import { IsString, MaxLength, MinLength } from "class-validator";
 
 export class CreateProfileDto {
     
@@ -8,6 +8,10 @@ export class CreateProfileDto {
     email: string;
 
     @IsString()
+    @MinLength(1)
+    password: string;
+
+    @IsString()
     @MaxLength(30)
     facebook: string;
 
@@ -15,8 +19,8 @@ export class CreateProfileDto {
     @MaxLength(30)
     github: string;
 
-    // @IsString()
-    // @MinLength(1)
-    // idCliente:string;
+    @IsString()
+    @MinLength(1)
+    idCliente:string;
 
 }
