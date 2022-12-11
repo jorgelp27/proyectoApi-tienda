@@ -1,9 +1,7 @@
 import { IsNumber, IsString, MaxLength } from "class-validator";
 
 export class CreateCestaDto {
-    
-    @IsNumber()
-    id: number;
+
 
     @IsNumber()
     cantidad: number;
@@ -11,4 +9,11 @@ export class CreateCestaDto {
     @IsString()
     @MaxLength(30)
     fecha: string;
+
+    @IsString()
+    idProducto?: string;
+
+    @IsString()
+    idProfile?: string;
+
 }

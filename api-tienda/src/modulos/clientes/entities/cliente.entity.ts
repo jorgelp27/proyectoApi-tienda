@@ -23,11 +23,6 @@ export class Cliente {
     @Column('text',{
         nullable: true
     })
-    email: string;
-
-    @Column('text',{
-        nullable: true
-    })
     ciudad: string;
 
     @Column('numeric',{

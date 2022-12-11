@@ -20,7 +20,7 @@ export class ProductosService {
   async create(createProductoDto: CreateProductoDto) {
     
     try {
-      const { idCliente, ...campos } = createProductoDto;
+      const { idCliente,...campos } = createProductoDto;
       // console.log({...campos});
       const cliente = this.clienteService.findOne(idCliente);
       const producto = this.productoRepository.create({...campos});
@@ -30,18 +30,26 @@ export class ProductosService {
       return producto
     } catch (error) {
         return new InternalServerErrorException('Error en BD')
+        
     }
+
  
   }
- 
- 
+
 
   findAll() {
-    return `This action returns all productos`;
+    return this.productoRepository.find({});
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} producto`;
+  findOne(id: string) {
+    return this.productoRepository.findOne({
+      where: { 
+        id 
+      },
+      relations: {
+          cestas: true,
+      }
+    });
   }
 
   update(id: number, updateProductoDto: UpdateProductoDto) {

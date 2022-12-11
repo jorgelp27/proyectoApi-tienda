@@ -5,7 +5,7 @@ export class CreateProveedorDto {
     
     @IsString()
     @MaxLength(9)
-    dni: number;
+    dni: string;
 
     @IsString()
     @MaxLength(50)

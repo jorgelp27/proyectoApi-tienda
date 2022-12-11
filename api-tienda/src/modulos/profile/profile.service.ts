@@ -11,7 +11,7 @@ export class ProfileService {
   
   constructor(
     @InjectRepository(Profile)
-    private readonly profileRepositorio: Repository<Profile>,
+    private readonly profileRepository: Repository<Profile>,
     private readonly clienteService: ClientesService
   ){
 
@@ -21,10 +21,10 @@ export class ProfileService {
     try {
       //console.log(createProfileDto);
       const { idCliente, ...camposProfile } = createProfileDto;
-      const profile = this.profileRepositorio.create({...camposProfile});
+      const profile = this.profileRepository.create({...camposProfile});
       const cliente = await this.clienteService.findOne(idCliente);
       profile.cliente = cliente;
-      await this.profileRepositorio.save(profile);
+      await this.profileRepository.save(profile);
       
       // cliente.profile = profile;
       // await this.clienteService.create(cliente);
@@ -38,11 +38,18 @@ export class ProfileService {
 
 
   findAll() {
-    return `This action returns all profile`;
+    return this.profileRepository.find({});
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} profile`;
+  findOne(id: string) {
+    return this.profileRepository.findOne({
+      where: { 
+        id 
+      },
+      relations: {
+          cesta: true,
+      }
+    });
   }
 
   update(id: number, updateProfileDto: UpdateProfileDto) {

@@ -10,10 +10,6 @@ export class CreateClienteDto {
     @MaxLength(50)
     nombre: string;
 
-    @IsEmail()
-    @MaxLength(30)
-    email: string;
-
     @IsString()
     @MaxLength(30)
     ciudad: string;

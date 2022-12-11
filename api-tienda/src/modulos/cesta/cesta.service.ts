@@ -1,11 +1,38 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { ProductosService } from '../productos/productos.service';
 import { CreateCestaDto } from './dto/create-cesta.dto';
 import { UpdateCestaDto } from './dto/update-cesta.dto';
+import { Cesta } from './entities/cesta.entity';
 
 @Injectable()
 export class CestaService {
-  create(createCestaDto: CreateCestaDto) {
-    return 'This action adds a new cesta';
+
+  constructor(
+    @InjectRepository(Cesta)
+    private readonly cestaRepository: Repository<Cesta>,
+    private readonly productoService: ProductosService
+  ){
+   
+  }
+  async create(createCestaDto: CreateCestaDto) {
+    
+    try {
+      const { idProducto,...campos } = createCestaDto;
+      // console.log({...campos});
+      const producto = this.productoService.findOne(idProducto);
+      const cesta = this.cestaRepository.create({...campos});
+      cesta.producto = await this.productoService.findOne(idProducto);
+      // //se lanza la petición sl SGBD (postgres). Esperar (x seg)
+      await this.cestaRepository.save(cesta)
+      return cesta
+    } catch (error) {
+        return new InternalServerErrorException('Error en BD')
+        
+    }
+
+ 
   }
 
   findAll() {

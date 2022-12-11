@@ -1,9 +1,10 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Producto } from "src/modulos/productos/entities/producto.entity";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity('proveedor')
 export class Proveedor {
     @PrimaryGeneratedColumn("uuid")
-    id: number;
+    id: string;
 
     @Column('text',{
         unique: true
@@ -24,4 +25,17 @@ export class Proveedor {
         nullable: true
     })
     telefono: number;
+
+
+
+    //Relacion con productos
+
+    @OneToMany(
+        () => Producto,
+        (Producto) => Producto.proveedor,
+        { cascade: false }
+    )
+
+    productos?: Producto[];
+
 }

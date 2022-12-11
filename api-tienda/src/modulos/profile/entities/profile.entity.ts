@@ -1,5 +1,6 @@
+import { Cesta } from "src/modulos/cesta/entities/cesta.entity";
 import { Cliente } from "src/modulos/clientes/entities/cliente.entity";
-import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { BeforeInsert, Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity('Profiles')
 
@@ -34,5 +35,21 @@ export class Profile {
     )
     @JoinColumn()
     cliente?: Cliente
+
+    //Relacion con cesta
+
+    @OneToOne(
+        (type) => Cesta,
+        (cesta) => cesta.profile,
+        { cascade: false }
+    )
+    cesta?: Cesta;
+
+    @BeforeInsert()
+    checkGithub(){
+        if (!this.github.includes('https://github.com/')){
+            this.github = `https://github.com/${this.github}`
+        }
+    }
 
 }

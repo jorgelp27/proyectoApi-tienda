@@ -19,7 +19,7 @@ export class ProveedorController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.proveedorService.findOne(+id);
+    return this.proveedorService.findOne(id);
   }
 
   @Patch(':id')

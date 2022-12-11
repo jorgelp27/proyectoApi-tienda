@@ -1,5 +1,5 @@
 import { Producto } from "src/modulos/productos/entities/producto.entity";
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { BeforeInsert, Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity('categoria')
 export class Categoria {
@@ -20,4 +20,9 @@ export class Categoria {
     )
     
     productos?: Producto[];
+
+    @BeforeInsert()
+    checkNombre(){
+        this.nombre = this.nombre.toUpperCase()
+    }
 }

@@ -2,7 +2,6 @@ import { IsNumber, IsString, MaxLength } from "class-validator";
 
 export class CreateProductoDto {
     
-
     @IsString()
     @MaxLength(50)
     modelo: string;
@@ -20,6 +19,14 @@ export class CreateProductoDto {
 
     @IsString()
     idCliente?: string;
+
+    @IsString()
+    idCategoria?: string;
+
+    @IsString()
+    idProveedor?: string;
+
+
 }
 
 

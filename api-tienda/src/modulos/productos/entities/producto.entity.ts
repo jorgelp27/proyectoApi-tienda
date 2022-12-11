@@ -1,6 +1,8 @@
 import { Categoria } from "src/modulos/categoria/entities/categoria.entity";
+import { Cesta } from "src/modulos/cesta/entities/cesta.entity";
 import { Cliente } from "src/modulos/clientes/entities/cliente.entity";
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Proveedor } from "src/modulos/proveedor/entities/proveedor.entity";
+import { BeforeInsert, Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity('productos')
 export class Producto {
@@ -29,6 +31,7 @@ export class Producto {
 
 
 //Relacion
+
     @ManyToOne(
         () => Categoria,
         (categoria) => categoria.productos,
@@ -42,5 +45,37 @@ export class Producto {
         { cascade: false }
     )
     cliente?: Cliente
+
+    @ManyToOne(
+        () => Proveedor,
+        (proveedor) => proveedor.productos,
+        {cascade: true}
+    )
+    proveedor?: Proveedor
+
+    //Relacion con cesta
+    
+    @OneToMany(
+        () => Cesta,
+        (Cesta) => Cesta.producto,
+        { cascade: false, eager: false  }
+
+        // { cascade: false, eager: true  }
+    )
+    cestas?: Cesta[];
+
+    //Triggers
+
+    @BeforeInsert()
+    checkModelo(){
+        this.modelo = this.modelo.toUpperCase()
+    }
+
+
+    @BeforeInsert()
+    precioIva(){
+        this.precio = this.precio*1.21;
+    }
+
 
 }

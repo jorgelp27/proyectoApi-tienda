@@ -13,7 +13,8 @@ import { ClientesModule } from '../clientes/clientes.module';
     TypeOrmModule.forFeature([Profile]),
     ClientesModule
   
-  ]
+  ],
+  exports: [ ProfileService ]
     
 })
 export class ProfileModule {}
