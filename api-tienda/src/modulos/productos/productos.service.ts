@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CategoriaService } from '../categoria/categoria.service';
 import { ClientesService } from '../clientes/clientes.service';
+import { ProveedorService } from '../proveedor/proveedor.service';
 import { CreateProductoDto } from './dto/create-producto.dto';
 import { UpdateProductoDto } from './dto/update-producto.dto';
 import { Producto } from './entities/producto.entity';
@@ -13,18 +14,24 @@ export class ProductosService {
   constructor(
     @InjectRepository(Producto)
     private readonly productoRepository: Repository<Producto>,
-    private readonly clienteService: ClientesService
+    private readonly clienteService: ClientesService,
+    private readonly categoriaService: CategoriaService,
+    private readonly proveedorService: ProveedorService
   ){
    
   }
   async create(createProductoDto: CreateProductoDto) {
     
     try {
-      const { idCliente,...campos } = createProductoDto;
+      const { idCliente,idCategoria,idProveedor,...campos } = createProductoDto;
       // console.log({...campos});
       const cliente = this.clienteService.findOne(idCliente);
+      const categoria = this.categoriaService.findOne(idCategoria);
+      const proveedor = this.proveedorService.findOne(idProveedor);
       const producto = this.productoRepository.create({...campos});
       producto.cliente = await this.clienteService.findOne(idCliente);
+      producto.categoria = await this.categoriaService.findOne(idCategoria);
+      producto.proveedor = await this.proveedorService.findOne(idProveedor);
       // //se lanza la petición sl SGBD (postgres). Esperar (x seg)
       await this.productoRepository.save(producto)
       return producto
@@ -47,7 +54,7 @@ export class ProductosService {
         id 
       },
       relations: {
-          cestas: true,
+          cesta: true,
       }
     });
   }

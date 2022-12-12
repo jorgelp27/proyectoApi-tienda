@@ -62,7 +62,7 @@ export class Producto {
 
         // { cascade: false, eager: true  }
     )
-    cestas?: Cesta[];
+    cesta?: Cesta[];
 
     //Triggers
 

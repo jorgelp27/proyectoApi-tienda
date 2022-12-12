@@ -2,6 +2,7 @@ import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { ProductosService } from '../productos/productos.service';
+import { ProfileService } from '../profile/profile.service';
 import { CreateCestaDto } from './dto/create-cesta.dto';
 import { UpdateCestaDto } from './dto/update-cesta.dto';
 import { Cesta } from './entities/cesta.entity';
@@ -12,18 +13,21 @@ export class CestaService {
   constructor(
     @InjectRepository(Cesta)
     private readonly cestaRepository: Repository<Cesta>,
-    private readonly productoService: ProductosService
+    private readonly productosService: ProductosService,
+    private readonly profileService: ProfileService
   ){
    
   }
   async create(createCestaDto: CreateCestaDto) {
     
     try {
-      const { idProducto,...campos } = createCestaDto;
+      const { idProducto,idProfile,...campos } = createCestaDto;
       // console.log({...campos});
-      const producto = this.productoService.findOne(idProducto);
+      const producto = this.productosService.findOne(idProducto);
+      const profile = this.profileService.findOne(idProfile);
       const cesta = this.cestaRepository.create({...campos});
-      cesta.producto = await this.productoService.findOne(idProducto);
+      cesta.producto = await this.productosService.findOne(idProducto);
+      cesta.profile = await this.profileService.findOne(idProfile);
       // //se lanza la petición sl SGBD (postgres). Esperar (x seg)
       await this.cestaRepository.save(cesta)
       return cesta

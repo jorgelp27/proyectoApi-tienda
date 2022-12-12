@@ -21,7 +21,7 @@ export class Cesta {
 
     @ManyToOne(
         () => Producto,
-        (producto) => producto.cestas,
+        (producto) => producto.cesta,
         { cascade: false }
     )
     producto?: Producto
