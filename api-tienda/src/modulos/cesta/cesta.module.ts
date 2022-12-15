@@ -4,13 +4,13 @@ import { CestaController } from './cesta.controller';
 import { Cesta } from './entities/cesta.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ProductosModule } from '../productos/productos.module';
-import { ProfileModule } from '../profile/profile.module';
+import { AuthModule } from '../auth/auth.module';
 
 @Module({
   controllers: [CestaController],
   providers: [CestaService],
   imports:[
-    ProductosModule, ProfileModule,
+    ProductosModule, AuthModule,
     TypeOrmModule.forFeature([ Cesta ]),
 ]
 })

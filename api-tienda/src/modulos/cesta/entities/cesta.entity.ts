@@ -1,5 +1,5 @@
+import { User } from "src/modulos/auth/entities/user.entity";
 import { Producto } from "src/modulos/productos/entities/producto.entity";
-import { Profile } from "src/modulos/profile/entities/profile.entity";
 import { BeforeInsert, Column, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity('cestas')
@@ -29,11 +29,11 @@ export class Cesta {
     //Ralacion con profile
 
     @OneToOne(
-        () => Profile,
-        (profile) => profile.cesta
+        () => User,
+        (user) => user.cesta
     )
     @JoinColumn()
-    profile?: Profile
+    user?: User
 
     
 }

@@ -14,6 +14,6 @@ export class CreateCestaDto {
     idProducto?: string;
 
     @IsString()
-    idProfile?: string;
+    idUser?: string;
 
 }

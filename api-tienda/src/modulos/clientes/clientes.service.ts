@@ -45,9 +45,13 @@ export class ClientesService {
   }
 
 
-  update(id: number, updateClienteDto: UpdateClienteDto) {
-    return `This action updates a #${id} cliente`;
+  update(id: number, updateUserDto: UpdateClienteDto) {
+    return this.clienteRepository.update(id, updateUserDto);
   }
+  
+  // update(id: number, updateClienteDto: UpdateClienteDto) {
+  //   return `This action updates a #${id} cliente`;
+  // }
 
   remove(id: number) {
     return `This action removes a #${id} cliente`;

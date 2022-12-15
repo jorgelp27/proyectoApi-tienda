@@ -2,9 +2,9 @@ import { Cesta } from "src/modulos/cesta/entities/cesta.entity";
 import { Cliente } from "src/modulos/clientes/entities/cliente.entity";
 import { BeforeInsert, Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity('Profiles')
+@Entity('users')
 
-export class Profile {
+export class User {
     @PrimaryGeneratedColumn("uuid")
     id: string;
 
@@ -13,8 +13,8 @@ export class Profile {
     })
     email: string;
 
-    @Column('text')
-    password?: string;
+    @Column('text', { select: false })
+    password: string;
 
     @Column('text',{
         unique: true
@@ -31,7 +31,7 @@ export class Profile {
 
     @OneToOne(
         () => Cliente,
-        (cliente) => cliente.profile
+        (cliente) => cliente.user
     )
     @JoinColumn()
     cliente?: Cliente
@@ -40,10 +40,12 @@ export class Profile {
 
     @OneToOne(
         (type) => Cesta,
-        (cesta) => cesta.profile,
+        (cesta) => cesta.user,
         { cascade: false }
     )
     cesta?: Cesta;
+
+    //Trigers
 
     @BeforeInsert()
     checkGithub(){

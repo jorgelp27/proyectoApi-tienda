@@ -3,11 +3,11 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { AuthModule } from './modulos/auth/auth.module';
 import { CategoriaModule } from './modulos/categoria/categoria.module';
 import { CestaModule } from './modulos/cesta/cesta.module';
 import { ClientesModule } from './modulos/clientes/clientes.module';
 import { ProductosModule } from './modulos/productos/productos.module';
-import { ProfileModule } from './modulos/profile/profile.module';
 import { ProveedorModule } from './modulos/proveedor/proveedor.module';
 
 @Module({
@@ -22,7 +22,7 @@ import { ProveedorModule } from './modulos/proveedor/proveedor.module';
       autoLoadEntities: true,
       synchronize: !!process.env.DB_SYNC
   }), 
-  ClientesModule,ProductosModule,ProveedorModule,CategoriaModule,CestaModule, ProfileModule
+  ClientesModule,ProductosModule,ProveedorModule,CategoriaModule,CestaModule, AuthModule
   ],
   controllers: [AppController],
   providers: [AppService],

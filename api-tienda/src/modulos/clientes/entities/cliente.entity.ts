@@ -1,7 +1,7 @@
 import { profile } from "console";
 import { type } from "os";
+import { User } from "src/modulos/auth/entities/user.entity";
 import { Producto } from "src/modulos/productos/entities/producto.entity";
-import { Profile } from "src/modulos/profile/entities/profile.entity";
 import { Column, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity('clientes')
@@ -33,11 +33,11 @@ export class Cliente {
     //Relaciones
 
     @OneToOne(
-        (type) => Profile,
-        (profile) => profile.cliente,
+        (type) => User,
+        (user) => user.cliente,
         { cascade:false }
     )
-    profile?: Profile;
+    user?: User;
 
 
     @OneToMany(
