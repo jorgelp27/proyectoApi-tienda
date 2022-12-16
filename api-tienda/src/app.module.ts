@@ -9,6 +9,7 @@ import { CestaModule } from './modulos/cesta/cesta.module';
 import { ClientesModule } from './modulos/clientes/clientes.module';
 import { ProductosModule } from './modulos/productos/productos.module';
 import { ProveedorModule } from './modulos/proveedor/proveedor.module';
+import { SeedModule } from './modulos/seed/seed.module';
 
 @Module({
   imports: [ConfigModule.forRoot(),
@@ -22,7 +23,7 @@ import { ProveedorModule } from './modulos/proveedor/proveedor.module';
       autoLoadEntities: true,
       synchronize: !!process.env.DB_SYNC
   }), 
-  ClientesModule,ProductosModule,ProveedorModule,CategoriaModule,CestaModule, AuthModule
+  ClientesModule,ProductosModule,ProveedorModule,CategoriaModule,CestaModule, AuthModule, SeedModule
   ],
   controllers: [AppController],
   providers: [AppService],
