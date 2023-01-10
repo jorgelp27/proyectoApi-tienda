@@ -1,4 +1,4 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import { BadRequestException, Injectable, InternalServerErrorException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateProveedorDto } from './dto/create-proveedor.dto';
@@ -26,6 +26,26 @@ export class ProveedorService {
       console.log(error);
       throw new InternalServerErrorException('Ayuda')
     }
+  }
+
+  async deleteAllProveedor(){
+    const query = this.proveedorRepository.createQueryBuilder('proveedor');
+    try {
+      return await query
+        .delete()
+        .where({})
+        .execute()
+  
+    }catch(error){
+      this.handleDBErrors (error)
+    }
+  }
+  
+  private handleDBErrors (error: any): never{
+    if (error.code === '23505')
+      throw new BadRequestException(error.detail)
+   
+    throw new InternalServerErrorException('Please Check Server Error ...')
   }
 
 

@@ -1,4 +1,4 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import { BadRequestException, Injectable, InternalServerErrorException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CategoriaService } from '../categoria/categoria.service';
@@ -41,6 +41,26 @@ export class ProductosService {
     }
 
  
+  }
+
+  async deleteAllProducto(){
+    const query = this.productoRepository.createQueryBuilder('producto');
+    try {
+      return await query
+        .delete()
+        .where({})
+        .execute()
+  
+    }catch(error){
+      this.handleDBErrors (error)
+    }
+  }
+  
+  private handleDBErrors (error: any): never{
+    if (error.code === '23505')
+      throw new BadRequestException(error.detail)
+   
+    throw new InternalServerErrorException('Please Check Server Error ...')
   }
 
 

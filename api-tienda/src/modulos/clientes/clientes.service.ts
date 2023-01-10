@@ -53,10 +53,10 @@ export class ClientesService {
     return this.clienteRepository.find({});
   }
 
-  findOne(id: string) {
+  findOne(dni: string) {
     return this.clienteRepository.findOne({
       where: { 
-        id 
+        dni 
       },
       relations: {
           productos: true,

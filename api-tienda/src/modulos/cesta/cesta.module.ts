@@ -12,6 +12,8 @@ import { AuthModule } from '../auth/auth.module';
   imports:[
     ProductosModule, AuthModule,
     TypeOrmModule.forFeature([ Cesta ]),
-]
+ 
+],
+  exports: [ CestaService ]
 })
 export class CestaModule {}

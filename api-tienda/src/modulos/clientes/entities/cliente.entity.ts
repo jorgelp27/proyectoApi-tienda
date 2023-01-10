@@ -1,18 +1,11 @@
-import { profile } from "console";
-import { type } from "os";
 import { User } from "src/modulos/auth/entities/user.entity";
 import { Producto } from "src/modulos/productos/entities/producto.entity";
-import { Column, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, OneToOne, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity('clientes')
 export class Cliente {
 
-    @PrimaryGeneratedColumn("uuid")
-    id: string;
-
-    @Column('text',{
-        unique: true
-    })
+    @PrimaryColumn()
     dni: string;
 
     @Column('text',{

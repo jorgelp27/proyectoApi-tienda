@@ -47,21 +47,34 @@ export class AuthService {
     throw new InternalServerErrorException('Please Check Server Error ...')
   }
 
+  async deleteAllAuth(){
+    const query = this.userRepository.createQueryBuilder('user');
+    try {
+      return await query
+        .delete()
+        .where({})
+        .execute()
+  
+    }catch(error){
+      this.handleDBErrors (error)
+    }
+  }
 
   findAll() {
     return this.userRepository.find({});
   }
 
-  findOne(id: string) {
+  findOne(idUser: string) {
     return this.userRepository.findOne({
       where: { 
-        id 
+        idUser 
       },
       relations: {
           cesta: true,
       }
     });
   }
+  
 
   update(id: number, updateAuthDto: UpdateAuthDto) {
     return `This action updates a #${id} auth`;

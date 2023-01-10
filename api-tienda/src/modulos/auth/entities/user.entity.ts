@@ -1,12 +1,12 @@
 import { Cesta } from "src/modulos/cesta/entities/cesta.entity";
 import { Cliente } from "src/modulos/clientes/entities/cliente.entity";
-import { BeforeInsert, Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { BeforeInsert, Column, Entity, JoinColumn, OneToOne, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity('users')
 
 export class User {
-    @PrimaryGeneratedColumn("uuid")
-    id: string;
+    @PrimaryColumn()
+    idUser: string;
 
     @Column('text',{
         unique: true

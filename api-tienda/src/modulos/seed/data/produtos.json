@@ -1,0 +1,23 @@
+[
+    {
+        "id": "527f",
+        "modelo": "Asus rock",
+        "precio": 400,
+        "fabricante": "hp",
+        "descripcion": "asdasdasd",
+        "idCliente": "78543596F",
+        "idCategoria": "91er",
+        "idProveedor": "45pg"
+    },
+
+    {
+        "id": "456h",
+        "modelo": "msi lepoard",
+        "precio": 900,
+        "fabricante": "msi",
+        "descripcion": "alkdsjlkadjalksdjla",
+        "idCliente": "12568596F",
+        "idCategoria": "78lp",
+        "idProveedor": "18bn"
+    }
+]

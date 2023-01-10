@@ -1,17 +1,21 @@
 [
     {
-        "email": "juangmail.com",
-        "facebook": "juan martinez",
-        "github": "juankl21"
+        "idUser": "96hu",
+        "email": "gines@gmail.com",
+        "password": "JKF656a5sdasd",
+        "facebook": "Gines Ramimirez",
+        "github": "ginesop21",
+        "idCliente": "12568596F"
     
     },
 
     {
-        "email": "lauragmail.com",
-        "facebook": "laura lopez",
-        "github": "laurakl21",
-        "password": "kljasdajsid",
-        "idCliente": "2a266459-dd52-478e-90b3-5192a84c16f4"
+        "idUser": "62yu",
+        "email": "jose@gmail.com",
+        "password": "JKF656a5sdasd",
+        "facebook": "Jose Ramimirez",
+        "github": "joseghj65",
+        "idCliente": "23328597k"
     
     }
 ]

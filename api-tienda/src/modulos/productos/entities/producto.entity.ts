@@ -2,11 +2,11 @@ import { Categoria } from "src/modulos/categoria/entities/categoria.entity";
 import { Cesta } from "src/modulos/cesta/entities/cesta.entity";
 import { Cliente } from "src/modulos/clientes/entities/cliente.entity";
 import { Proveedor } from "src/modulos/proveedor/entities/proveedor.entity";
-import { BeforeInsert, Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { BeforeInsert, Column, Entity, ManyToOne, OneToMany, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity('productos')
 export class Producto {
-    @PrimaryGeneratedColumn("uuid")
+    @PrimaryColumn()
     id: string;
 
     @Column('text',{

@@ -2,6 +2,10 @@ import { IsEmail, IsNumber, IsString, MaxLength } from "class-validator";
 
 
 export class CreateProveedorDto {
+
+    @IsString()
+    @MaxLength(9)
+    id: string;
     
     @IsString()
     @MaxLength(9)

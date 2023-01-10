@@ -1,9 +1,9 @@
 import { Producto } from "src/modulos/productos/entities/producto.entity";
-import { BeforeInsert, Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { BeforeInsert, Column, Entity, OneToMany, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity('categoria')
 export class Categoria {
-    @PrimaryGeneratedColumn("uuid")
+    @PrimaryColumn()
     id: string;
 
     @Column('text',{
