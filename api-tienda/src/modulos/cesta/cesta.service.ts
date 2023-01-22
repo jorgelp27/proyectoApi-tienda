@@ -60,8 +60,9 @@ export class CestaService {
   }
 
   findAll() {
-    return `This action returns all cesta`;
+    return this.cestaRepository.find({});
   }
+
 
   findOne(id: number) {
     return `This action returns a #${id} cesta`;

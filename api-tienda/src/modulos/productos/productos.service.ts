@@ -68,6 +68,8 @@ export class ProductosService {
     return this.productoRepository.find({});
   }
 
+  
+
   findOne(id: string) {
     return this.productoRepository.findOne({
       where: { 
