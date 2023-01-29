@@ -1,12 +1,12 @@
+
+import { IProveedor } from '@/interfaces/proveedor';
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import { FC } from 'react';
-import { ICliente } from '../../interfaces/clientes/IClientes';
-
 
 interface Props {
-    clientes: ICliente[]
+    proveedor: IProveedor[]
 }
-export const ClientesList:FC<Props> = ({ clientes }) => {
+export const ProveedorList:FC<Props> = ({ proveedor }) => {
   return (
     <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -15,24 +15,24 @@ export const ClientesList:FC<Props> = ({ clientes }) => {
 
                 <TableCell align="left">Dni</TableCell>
                 <TableCell align="right">Nombre</TableCell>
+                <TableCell align="right">Email</TableCell>
                 <TableCell align="right">Telefono</TableCell>
-                <TableCell align="right">Ciudad</TableCell>
                 
             </TableRow>
         </TableHead>
 
         <TableBody>
                 { 
-                    clientes.map((cliente: ICliente) => (
-                        <TableRow key= { cliente.dni } 
+                    proveedor.map((proveedor: IProveedor) => (
+                        <TableRow key= { proveedor.dni } 
                                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
                             <TableCell component="th" scope="row">
-                                { cliente.dni }
+                                { proveedor.dni }
                             </TableCell>
-                            <TableCell align="right">{cliente.nombre}</TableCell>
-                            <TableCell align="right">{cliente.telefono}</TableCell>
-                            <TableCell align="right">{cliente.ciudad}</TableCell>
+                            <TableCell align="right">{proveedor.nombre}</TableCell>
+                            <TableCell align="right">{proveedor.email}</TableCell>
+                            <TableCell align="right">{proveedor.telefono}</TableCell>
                         </TableRow>
                     )
                 )}

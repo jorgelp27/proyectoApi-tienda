@@ -16,25 +16,33 @@ export const NavBar = () => {
                 <MenuIcon />
             </IconButton>
             <Typography variant="h6" component="h3" sx={{  }}>
-                Home
-            </Typography>
+
+                <Link href='/'  component={ NextLink }>
+                            <Button sx={{ color: 'white'}}>Home</Button>
+                    </Link>
+                </Typography>
+                
             <Box flex={1} />
             
             <Box component="nav" 
                  sx= {{ display: { xs: 'none', sm: 'flex' }}} >
                     
-                <Link href='/Productos' passHref component={ NextLink }>
+                <Link href='/productos' passHref component={ NextLink }>
                     <Button sx={{ color: 'white'}}>Productos</Button>
                 </Link>
                 <Link href='/categorias' component={ NextLink }>
                     <Button sx={{ color: 'white'}}>Categorias</Button>
                 </Link>
                 <Link href='/proveedor' component={ NextLink }>
-                    <Button sx={{ color: 'white'}}>Proveddor</Button>
+                    <Button sx={{ color: 'white'}}>Provedor</Button>
                 </Link>
 
                 <Link href='/cesta' component={ NextLink }>
-                    <Button sx={{ color: 'white'}}>Cesta</Button>
+                    <Button sx={{ color: 'white'}}>cesta</Button>
+                </Link>
+
+                <Link href='/clientes' component={ NextLink }>
+                    <Button sx={{ color: 'white'}}>clientes</Button>
                 </Link>
 
             </Box>

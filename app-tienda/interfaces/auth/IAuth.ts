@@ -5,6 +5,7 @@ export interface IAuth {
     password:      string;
     facebook:      string;
     github:        string;
+    idCliente:     string;
 
 }
 

@@ -13,13 +13,11 @@ const indexPage: NextPage = () => {
   console.log(isLoading, "c=", clientes);
   return (
     <MainLayouts>
-      {
-        (isLoading )
-          ? <ClientesList clientes={ clientes }  /> 
-          : <Mundo />
+        <h2>Api-tienda</h2>
+        <Button
+            sx={{ backgroundColor:'red'}} variant='contained'
+        > Hola Mundo</Button>
 
-      }
-        
     </MainLayouts>
   )
 }

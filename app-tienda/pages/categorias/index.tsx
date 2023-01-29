@@ -1,14 +1,28 @@
+import { Mundo } from '@/components';
+import { CategoriasList } from '@/components/categorias/categoriasList';
+import { useCategorias } from '@/hooks/usecategorias';
+
+import { NextPage } from 'next';
 import React from 'react'
 import { MainLayouts } from '../../layouts'
 
-const CategoriaIndex = () => {
+const categoriaPage: NextPage = () => {
+  const { categorias, isLoading } = useCategorias ('/categoria');
+  const respuesta = useCategorias ('/categoria');
+ console.log(respuesta);
+  console.log(isLoading, "c=", categorias);
   return (
     <MainLayouts>
-        <h2>Seccion Categorias</h2>
+      {
+        (isLoading )
+          ? <CategoriasList categorias={ categorias }  /> 
+          : <Mundo />
+
+      }
+        
     </MainLayouts>
-    
   )
 }
 
 
-export default CategoriaIndex
+export default categoriaPage

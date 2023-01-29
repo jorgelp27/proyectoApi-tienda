@@ -1,38 +1,36 @@
+
+import { ICategoria } from '@/interfaces/categorias';
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import { FC } from 'react';
-import { ICliente } from '../../interfaces/clientes/IClientes';
 
 
 interface Props {
-    clientes: ICliente[]
+    categorias: ICategoria[]
 }
-export const ClientesList:FC<Props> = ({ clientes }) => {
+export const CategoriasList:FC<Props> = ({ categorias }) => {
   return (
     <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
             <TableRow>
 
-                <TableCell align="left">Dni</TableCell>
+                <TableCell align="left">ID</TableCell>
                 <TableCell align="right">Nombre</TableCell>
-                <TableCell align="right">Telefono</TableCell>
-                <TableCell align="right">Ciudad</TableCell>
                 
             </TableRow>
         </TableHead>
 
         <TableBody>
                 { 
-                    clientes.map((cliente: ICliente) => (
-                        <TableRow key= { cliente.dni } 
+                    categorias.map((categoria: ICategoria) => (
+                        <TableRow key= { categoria.id } 
                                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
                             <TableCell component="th" scope="row">
-                                { cliente.dni }
+                                { categoria.id }
                             </TableCell>
-                            <TableCell align="right">{cliente.nombre}</TableCell>
-                            <TableCell align="right">{cliente.telefono}</TableCell>
-                            <TableCell align="right">{cliente.ciudad}</TableCell>
+                            <TableCell align="right">{categoria.nombre}</TableCell>
+                            
                         </TableRow>
                     )
                 )}
