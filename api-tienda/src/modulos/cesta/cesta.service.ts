@@ -60,7 +60,12 @@ export class CestaService {
   }
 
   findAll() {
-    return this.cestaRepository.find({});
+    return this.cestaRepository.find({
+      relations:{
+        producto: true,
+        user: true
+      }
+    });
   }
 
 

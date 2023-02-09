@@ -4,7 +4,7 @@ import { ProveedorList } from '@/components/proveedor/proveedorList';
 import { useProveedor } from '@/hooks/useproveedor';
 import { NextPage } from 'next';
 import React from 'react'
-import { MainLayouts } from '../../layouts'
+import { MainLayouts, PublicLayouts } from '../../layouts'
 
 const ProveedorIndex: NextPage = () => {
   const { proveedor, isLoading } = useProveedor ('/proveedor');
@@ -12,7 +12,7 @@ const ProveedorIndex: NextPage = () => {
  console.log(respuesta);
   console.log(isLoading, "c=", proveedor);
   return (
-    <MainLayouts>
+    <PublicLayouts>
       {
         (isLoading )
           ? <ProveedorList proveedor={ proveedor }  /> 
@@ -20,7 +20,7 @@ const ProveedorIndex: NextPage = () => {
 
       }
         
-    </MainLayouts>
+    </PublicLayouts>
   )
 }
 

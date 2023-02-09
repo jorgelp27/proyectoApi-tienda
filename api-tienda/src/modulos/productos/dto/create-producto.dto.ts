@@ -18,8 +18,13 @@ export class CreateProductoDto {
     fabricante: string;
 
     @IsString()
-    @MaxLength(70)
+    @MaxLength(400)
     descripcion: string;
+
+    @IsString()
+    
+    imagen: string;
+
 
     @IsString()
     idCliente?: string;

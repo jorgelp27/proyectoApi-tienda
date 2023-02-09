@@ -1,27 +1,18 @@
 import { AppBar, Box, Button, IconButton, Link, Toolbar, Typography } from "@mui/material"
 import MenuIcon from '@mui/icons-material/Menu';
 import NextLink from 'next/link';
+import Image from "next/image";
 
 export const NavBar = () => {
   return (
-    <AppBar>
-        <Toolbar>
-            <IconButton
-                size="large"
-                edge="start"
-                aria-label="menu"
-                color="inherit"
-                sx={{  }}
-            >
-                <MenuIcon />
-            </IconButton>
-            <Typography variant="h6" component="h3" sx={{  }}>
+    <AppBar sx={{ backgroundColor:'green'}}>
+         <Toolbar>
 
-                <Link href='/'  component={ NextLink }>
-                            <Button sx={{ color: 'white'}}>Home</Button>
-                    </Link>
-                </Typography>
-                
+            <Image src="/logo.png" width={80} height={60}  alt="logo" />
+
+            <Link href='/' passHref component={ NextLink }>
+                    <Button sx={{ color: 'white'}}>Home</Button>
+            </Link>
             <Box flex={1} />
             
             <Box component="nav" 
@@ -45,11 +36,25 @@ export const NavBar = () => {
                     <Button sx={{ color: 'white'}}>clientes</Button>
                 </Link>
 
+                <Link href='/auth' component={ NextLink }>
+                    <Button sx={{ color: 'white'}}>Auth</Button>
+                </Link>
+                <Box flex={1} />
             </Box>
-            <Box flex={1} />
-            <Box>
-                Registro
-            </Box>
+                <Box flex={1} />
+                <Link href='/auth/login' passHref component={ NextLink }>
+                    <Button sx={{ color: 'white'}}>Login</Button>
+                </Link>
+                <Box flex={1} />
+                <IconButton
+                    size="large"
+                    edge="start"
+                    aria-label="menu"
+                    color="inherit"
+                    sx={{  }}
+                >
+                    <MenuIcon />
+                </IconButton>
         </Toolbar>
     </AppBar>
   )

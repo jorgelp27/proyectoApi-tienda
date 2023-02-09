@@ -29,6 +29,11 @@ export class Producto {
     })
     descripcion: string;
 
+    @Column('text',{
+        nullable: true
+    })
+    imagen: string;
+
 
 //Relacion
 

@@ -15,8 +15,9 @@ export const CestasList:FC<Props> = ({ cestas }) => {
 
                 <TableCell align="left">ID</TableCell>
                 <TableCell align="right">Cantidad</TableCell>
+                <TableCell align="right">fecha</TableCell>
                 <TableCell align="right">idProducto</TableCell>
-                <TableCell align="right">idUser</TableCell>
+                <TableCell align="right">User</TableCell>
                 
             </TableRow>
         </TableHead>
@@ -32,8 +33,8 @@ export const CestasList:FC<Props> = ({ cestas }) => {
                             </TableCell>
                             <TableCell align="right">{cesta.cantidad}</TableCell>
                             <TableCell align="right">{cesta.fecha}</TableCell>
-                            <TableCell align="right">{cesta.idProducto}</TableCell>
-                            <TableCell align="right">{cesta.idUser}</TableCell>
+                            <TableCell align="right">{cesta.producto?.modelo}</TableCell>
+                            <TableCell align="right">{cesta.user?.email}</TableCell>
                         </TableRow>
                     )
                 )}

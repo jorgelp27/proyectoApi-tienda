@@ -1,10 +1,11 @@
+import Image from 'next/image';
 import React, { FC } from 'react'
-import { NavBar } from '../components/commons/admin';
+import { NavBar } from '../components/commons';
 
 interface Props {
     children: any;
 }
-export const MainLayouts:FC<Props> = ({children}) => {
+export const PublicLayouts:FC<Props> = ({ children }) => {
   return (
     <>
         <header>
@@ -17,8 +18,9 @@ export const MainLayouts:FC<Props> = ({children}) => {
         }}>
             { children }
         </main>
+
         <footer>
-            <h2>Zona Footer</h2>
+            <h2>Footer de la página</h2>
         </footer>
     </>
   )

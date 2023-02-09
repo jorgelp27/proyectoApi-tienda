@@ -61,7 +61,11 @@ export class AuthService {
   }
 
   findAll() {
-    return this.userRepository.find({});
+    return this.userRepository.find({
+      relations: {
+        cliente: true
+      }
+    });
   }
 
   findOne(idUser: string) {

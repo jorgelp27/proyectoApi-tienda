@@ -65,10 +65,17 @@ export class ProductosService {
 
 
   findAll() {
-    return this.productoRepository.find({});
+    return this.productoRepository.find({
+      relations:{
+        cliente: true,
+        categoria: true,
+        proveedor: true
+      }
+    });
   }
 
-  
+  // colocar el relatins, clientre true y luego en la interfaz de procutos se añaden las relaciones, es decir se añadden las interfaces
+  // En la tabla pintamos los cambios, poducto.cliente.nombre
 
   findOne(id: string) {
     return this.productoRepository.findOne({

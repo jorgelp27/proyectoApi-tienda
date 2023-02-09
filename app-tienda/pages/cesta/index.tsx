@@ -3,7 +3,7 @@ import { CestasList } from '@/components/cestas/cestasList';
 import { useCesta } from '@/hooks/useCestas';
 import { NextPage } from 'next';
 import React from 'react'
-import { MainLayouts } from '../../layouts'
+import { MainLayouts, PublicLayouts } from '../../layouts'
 
 
 const CestaPage: NextPage = () => {
@@ -12,7 +12,7 @@ const CestaPage: NextPage = () => {
  console.log(respuesta);
   console.log(isLoading, "c=", cestas);
   return (
-    <MainLayouts>
+    <PublicLayouts>
       {
         (isLoading )
           ? <CestasList cestas={ cestas }  /> 
@@ -20,7 +20,7 @@ const CestaPage: NextPage = () => {
 
       }
         
-    </MainLayouts>
+    </PublicLayouts>
   )
 }
 

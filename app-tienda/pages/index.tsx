@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 import { NextPage } from "next"
-import { MainLayouts } from "../layouts";
+import { MainLayouts, PublicLayouts } from "../layouts";
 import { useClientes } from '../hooks/useClientes';
 import { ClientesList } from '../components/clientes/clientesList';
 import { Mundo } from '../components/Mundo';
@@ -12,13 +12,13 @@ const indexPage: NextPage = () => {
  console.log(respuesta);
   console.log(isLoading, "c=", clientes);
   return (
-    <MainLayouts>
+    <PublicLayouts>
         <h2>Api-tienda</h2>
         <Button
             sx={{ backgroundColor:'red'}} variant='contained'
         > Hola Mundo</Button>
 
-    </MainLayouts>
+    </PublicLayouts>
   )
 }
 

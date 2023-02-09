@@ -1,7 +1,7 @@
 import { ProductosList } from '@/components/productos/productosList';
 import { useProductos } from '@/hooks/useProductos';
 import React from 'react'
-import { MainLayouts } from '../../layouts'
+import { MainLayouts, PublicLayouts } from '../../layouts'
 import { NextPage } from 'next';
 import { Mundo } from '@/components';
 
@@ -13,7 +13,7 @@ const ProductosIndex: NextPage = () => {
  console.log(respuesta);
   console.log(isLoading, "c=", productos);
   return (
-    <MainLayouts>
+    <PublicLayouts>
       {
         (isLoading )
           ? <ProductosList productos={ productos }  /> 
@@ -21,7 +21,7 @@ const ProductosIndex: NextPage = () => {
 
       }
         
-    </MainLayouts>
+    </PublicLayouts>
   )
 }
 
