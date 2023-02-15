@@ -14,6 +14,7 @@
     "@fontsource/akshar": "^4.5.4",
     "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.11.5",
+    "@mui/x-data-grid": "^5.17.23",
     "@next/font": "13.1.4",
     "@types/node": "18.11.18",
     "@types/react": "18.0.27",

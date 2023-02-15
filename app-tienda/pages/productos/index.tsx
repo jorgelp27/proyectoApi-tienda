@@ -4,6 +4,7 @@ import React from 'react'
 import { MainLayouts, PublicLayouts } from '../../layouts'
 import { NextPage } from 'next';
 import { Mundo } from '@/components';
+import { ProductosCardList } from '@/components/productos/ProductoCardList';
 
 
 
@@ -14,12 +15,8 @@ const ProductosIndex: NextPage = () => {
   console.log(isLoading, "c=", productos);
   return (
     <PublicLayouts>
-      {
-        (isLoading )
-          ? <ProductosList productos={ productos }  /> 
-          : <Mundo />
-
-      }
+      <h2>Sección de Libros</h2>
+      <ProductosCardList productos = {productos} />
         
     </PublicLayouts>
   )
