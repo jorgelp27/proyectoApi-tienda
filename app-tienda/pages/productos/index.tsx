@@ -17,7 +17,7 @@ const ProductosIndex: NextPage = () => {
     <PublicLayouts>
       <h2>Sección de Libros</h2>
       <ProductosCardList productos = {productos} />
-        
+      
     </PublicLayouts>
   )
 }

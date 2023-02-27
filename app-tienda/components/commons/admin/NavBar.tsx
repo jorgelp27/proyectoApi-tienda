@@ -42,7 +42,7 @@ export const NavBar = () => {
             </Box>
             <Box flex={1} />
             <Box>
-                <Typography>User: Morgado</Typography>
+                <Typography>User: Jorge</Typography>
                 <Link href='/' component={ NextLink }>
                      <LogoutIcon sx={{ color: 'white'}} />
                 </Link>
