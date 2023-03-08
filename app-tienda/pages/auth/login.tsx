@@ -34,7 +34,7 @@ const LoginPage = () => {
         }
         //navegar a pantalla en la que estaba el usuario
         // router.push('/');
-        router.replace('/');
+        router.replace('/productos');
     } 
     return (
         <AuthLayout title={'Ingresar'}>
