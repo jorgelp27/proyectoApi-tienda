@@ -24,6 +24,7 @@ type UserData = {
 };
 const RegisterPage = () => {
   const router = useRouter();
+  //hook
   const { registerUser } = useContext(AuthContext);
   const { register, handleSubmit, formState: { errors } } = useForm<UserData>();
   const [ showError, setShowError ] = useState(false);
@@ -59,6 +60,7 @@ const RegisterPage = () => {
                                 sx={{ display: showError ? 'flex': 'none'}}
                             />
                 </Grid>
+
                 <Grid item xs={12}>
                     <TextField 
                         { ...register('fullName', {

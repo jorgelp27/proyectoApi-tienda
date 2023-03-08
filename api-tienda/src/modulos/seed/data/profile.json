@@ -1,20 +1,22 @@
 [
     {
-        "idUser": "96hu",
+        
         "email": "gines@gmail.com",
         "password": "JKF656a5sdasd",
         "facebook": "Gines Ramimirez",
         "github": "ginesop21",
+        "fullName":"gines oller",
         "idCliente": "12568596F"
     
     },
 
     {
-        "idUser": "62yu",
+       
         "email": "jose@gmail.com",
         "password": "JKF656a5sdasd",
         "facebook": "Jose Ramimirez",
         "github": "joseghj65",
+        "fullName":"jose Angel",
         "idCliente": "23328597k"
     
     }

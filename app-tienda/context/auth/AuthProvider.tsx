@@ -4,22 +4,30 @@ import { IUser } from '../../interfaces/Users/IUser';
 import libreriaApi from '../../api/LibreriaApi';
 import Cookies from 'js-cookie';
 import axios from 'axios';
-import { IRespuestaApiAuth } from './interfaces/IRespuestaAuthApi';
+
 import { authReducer } from './authReducer';
 import { AuthContext } from './AuthContext';
+import { IAuth, IRespuestaApiAuth } from './interfaces/IRespuestaAuthApi';
 
 
 
 export interface AuthState{
     isLoggedIn: boolean;
-    user?: IUser;
+    user?: IAuth;
 }
+
 const AUTH_INITIAL_STATE: AuthState = {
     isLoggedIn: false,
     user: undefined
 }
 
-export const AuthProvider:FC = ({ children }) => {
+interface Props {
+    children: any
+}
+
+
+
+export const AuthProvider:FC < ({ children:any })> =({children}) => {
     const [ state, dispatch ] = useReducer( authReducer, AUTH_INITIAL_STATE );
     const loginUser = async (email: string, password: string):Promise<boolean> => {
         try {
@@ -37,7 +45,7 @@ export const AuthProvider:FC = ({ children }) => {
 
     const registerUser = async (email: string, password: string, fullName: string ):Promise<IRespuestaApiAuth>=> {
         try {
-            const { data } = await libreriaApi.post ('/auth/rgister', { email, fullName, password })
+            const { data } = await libreriaApi.post ('/auth/register', { email, fullName, password })
             const { token, user } = data;
             Cookies.set('token', token);
             //mando a llamar al login pq ya se autenticó

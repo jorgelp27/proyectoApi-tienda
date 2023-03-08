@@ -5,8 +5,8 @@ import { BeforeInsert, Column, Entity, JoinColumn, OneToOne, PrimaryColumn, Prim
 @Entity('users')
 
 export class User {
-    @PrimaryColumn()
-    idUser: string;
+    @PrimaryGeneratedColumn("uuid")
+    id: string;
 
     @Column('text',{
         unique: true
@@ -17,14 +17,26 @@ export class User {
     password: string;
 
     @Column('text',{
-        unique: true
+        nullable: true
     })
-    facebook: string;
+    facebook?: string;
 
     @Column('text',{
         nullable: true
     })
-    github: string;
+    github?: string;
+
+    @Column('text')
+    fullName: string;
+
+    @Column('text', {
+        array: true,
+        default: ['user']
+    })
+    roles: string[];
+
+    @Column('bool', { default: true })
+    isActive: boolean;
 
 
     //Relacion
@@ -47,11 +59,11 @@ export class User {
 
     //Trigers
 
-    @BeforeInsert()
-    checkGithub(){
-        if (!this.github.includes('https://github.com/')){
-            this.github = `https://github.com/${this.github}`
-        }
-    }
+    // @BeforeInsert()
+    // checkGithub(){
+    //     if (!this.github.includes('https://github.com/')){
+    //         this.github = `https://github.com/${this.github}`
+    //     }
+    // }
 
 }

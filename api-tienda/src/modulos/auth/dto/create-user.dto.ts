@@ -1,10 +1,10 @@
-import { IsEmail, IsString, Matches, MaxLength, MinLength } from "class-validator";
+import { IsEmail, IsOptional, IsString, Matches, MaxLength, MinLength } from "class-validator";
 
 export class CreateUserDto {
     
-    @IsString()
-    @MaxLength(9)
-    idUser: string;
+    // @IsString()
+    // @MaxLength(9)
+    // idUser?: string;
     
     @IsString()
     @IsEmail()
@@ -20,15 +20,21 @@ export class CreateUserDto {
     password: string;
 
     @IsString()
+    @IsOptional()
     @MaxLength(30)
-    facebook: string;
+    facebook?: string;
 
     @IsString()
+    @IsOptional()
     @MaxLength(30)
-    github: string;
+    github?: string;
 
     @IsString()
     @MinLength(1)
-    idCliente:string;
+    fullName:string;
+
+    // @IsString()
+    // @MinLength(1)
+    // idCliente?:string;
     
 }

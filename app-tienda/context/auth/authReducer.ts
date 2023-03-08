@@ -1,9 +1,10 @@
 import { IUser } from "../../interfaces/Users/IUser";
 import { AuthState } from "./AuthProvider";
+import { IAuth } from "./interfaces/IRespuestaAuthApi";
 
 
 type AuthActionType =
-| { type: '[Auth] - Login', payload: IUser }
+| { type: '[Auth] - Login', payload: IAuth }
 | { type: '[Auth] - Logout' }
 
 
