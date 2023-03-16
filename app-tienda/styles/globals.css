@@ -5,13 +5,14 @@
 h1 {
   color: red
 }
+
 header {
   height: 70px;
   /* background-color: blue; */
 }
 
 main{
-  
+  background-image: url('/public/Fotohome.png');
   height: auto;
   background-color: azure;
 }

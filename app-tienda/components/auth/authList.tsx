@@ -1,5 +1,5 @@
 
-import { IAuth } from '@/interfaces/cesta';
+import { IAuth } from '@/interfaces/auth/IAuth';
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import { FC } from 'react';
 
@@ -18,7 +18,7 @@ export const AuthList:FC<Props> = ({ auths }) => {
                 <TableCell align="right">email</TableCell>
                 <TableCell align="right">Facebook</TableCell>
                 <TableCell align="right">Github</TableCell>
-                <TableCell align="right">idCliente</TableCell>
+                {/* <TableCell align="right">idCliente</TableCell> */}
                 
             </TableRow>
         </TableHead>
@@ -26,16 +26,16 @@ export const AuthList:FC<Props> = ({ auths }) => {
         <TableBody>
                 { 
                     auths.map((auth: IAuth) => (
-                        <TableRow key= { auth.idUser } 
+                        <TableRow key= { auth.id } 
                                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
                             <TableCell component="th" scope="row">
-                                { auth.idUser }
+                                { auth.id }
                             </TableCell>
                             <TableCell align="right">{auth.email}</TableCell>
                             <TableCell align="right">{auth.facebook}</TableCell>
                             <TableCell align="right">{auth.github}</TableCell>
-                            <TableCell align="right">{auth.cliente.nombre}</TableCell>
+                            {/* <TableCell align="right">{auth.cliente.nombre}</TableCell> */}
                             
                         </TableRow>
                     )

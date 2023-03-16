@@ -8,14 +8,16 @@ export interface ICliente {
     
 }
 export interface IAuth {
-    idUser:        string;
+    id?:           string;
     email:         string;
     password:      string;
-    facebook:      string;
-    github:        string;
-    idCliente:     string;
-    cliente: ICliente
-
+    isActive?:     boolean;
+    token?:        string;
+    fullName:      string;
+    facebook?:     string;
+    github?:       string;
+    roles?:        string[]
+   
 }
 
 // export interface IAuth: Auth[];

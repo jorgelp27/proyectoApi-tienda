@@ -8,8 +8,9 @@ import { AuthContext } from "@/context/auth/AuthContext";
 
 export const NavBar = () => {
     const { user } =  useContext(AuthContext); 
+    console.log(user)
   return (
-    <AppBar sx={{ backgroundColor:'green'}}>
+    <AppBar sx={{ backgroundColor:'darkorange'}}>
          <Toolbar>
 
             <Image src="/logo.png" width={80} height={60}  alt="logo" />
@@ -41,9 +42,9 @@ export const NavBar = () => {
                     <Button sx={{ color: 'white'}}>clientes</Button>
                 </Link>
 
-                <Link href='/auth' component={ NextLink }>
+                {/* <Link href='/auth' component={ NextLink }>
                     <Button sx={{ color: 'white'}}>Auth</Button>
-                </Link>
+                </Link> */}
                 <Box flex={1} />
             </Box>
                 <Box flex={1} />

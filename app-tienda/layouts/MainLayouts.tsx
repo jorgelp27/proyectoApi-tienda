@@ -14,6 +14,7 @@ export const MainLayouts:FC<Props> = ({children}) => {
             margin: '20px auto',
             maxWidth: '1440px',
             padding: '0px 30px'
+            
         }}>
             { children }
         </main>

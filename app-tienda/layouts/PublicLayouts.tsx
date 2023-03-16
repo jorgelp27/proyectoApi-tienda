@@ -11,6 +11,7 @@ export const PublicLayouts:FC<Props> = ({ children }) => {
         <header>
             <NavBar />
         </header>
+
         <main style={{
             margin: '20px auto',
             maxWidth: '1440px',
@@ -19,9 +20,9 @@ export const PublicLayouts:FC<Props> = ({ children }) => {
             { children }
         </main>
 
-        <footer>
+        {/* <footer>
             <h2>Footer de la página</h2>
-        </footer>
+        </footer> */}
     </>
   )
 }

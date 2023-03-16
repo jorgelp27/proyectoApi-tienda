@@ -19,7 +19,7 @@ export interface IProducto {
 }
 
 export interface IAuth {
-    idUser:        string;
+    id:            string;
     email:         string;
     password:      string;
     facebook:      string;

@@ -12,6 +12,7 @@ interface IRespuestaLogin {
     token: string;
     email: string;
     password: string;
+    
 }
 type FormData = {
     email: string,

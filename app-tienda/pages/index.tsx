@@ -13,10 +13,10 @@ const indexPage: NextPage = () => {
   console.log(isLoading, "c=", clientes);
   return (
     <PublicLayouts>
-        <h2>Api-tienda</h2>
-        <Button
+        {/* <h2>Api-tienda</h2> */}
+        {/* <Button
             sx={{ backgroundColor:'red'}} variant='contained'
-        > Hola Mundo</Button>
+        > Hola Mundo</Button> */}
 
     </PublicLayouts>
   )

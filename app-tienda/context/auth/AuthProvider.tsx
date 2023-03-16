@@ -58,6 +58,7 @@ export const AuthProvider:FC<{children: any}> = ({ children }) => {
             const { data } = await libreriaApi.post ('/auth/register', { email, fullName, password })
             const { token, user } = data;
             Cookies.set('token', token);
+            // Cookies.set('rol', user.roles[0]);
             //mando a llamar al login pq ya se autenticó
             dispatch({ type: '[Auth] - Login', payload: user });
             return {

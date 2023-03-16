@@ -1,5 +1,5 @@
 import { Box, Button, Grid, Typography } from '@mui/material';
-import Image from 'next/image';
+import Image,{ImageLoader} from 'next/image';
 import React, { FC, useContext } from 'react'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Tab from '@mui/material/Tab';
@@ -14,7 +14,7 @@ interface Props {
     producto: IProducto
 }
 
-const myLoader = ({src, width, quality}) =>{
+const myLoader:ImageLoader = ({src, width, quality}) =>{
   // return `https://s3.amazonaws.com/AKIAJC5RLADLUMVRPFDQ.book-thumb-images/`
   return `${src}?s=${width}`
 }
